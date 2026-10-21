@@ -1,0 +1,12 @@
+- Nikto v2.1.5/2.1.5
++ Target Host: localhost
++ Target Port: 3000
++ GET /: Server leaks inodes via ETags, header found with file /, fields: 0xW/24b1 0x1a11a8d9158 
++ GET /: Uncommon header 'access-control-allow-origin' found, with contents: *
++ GET /: Uncommon header 'feature-policy' found, with contents: payment 'self'
++ GET /: Uncommon header 'x-content-type-options' found, with contents: nosniff
++ GET /: Uncommon header 'x-frame-options' found, with contents: SAMEORIGIN
++ GET /: Uncommon header 'x-recruiting' found, with contents: /#/jobs
++ GET //ftp/: File/dir '/ftp/' in robots.txt returned a non-forbidden or redirect HTTP code (200)
++ GET /robots.txt: "robots.txt" contains 1 entry which should be manually viewed.
++ OPTIONS *: Uncommon header 'access-control-allow-methods' found, with contents: GET,HEAD,PUT,PATCH,POST,DELETE
