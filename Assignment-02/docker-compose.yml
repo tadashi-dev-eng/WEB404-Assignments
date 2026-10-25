@@ -1,0 +1,24 @@
+services:
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    ports:
+      - "8081:80"        # direct / unprotected access
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    container_name: modsec-waf
+    depends_on:
+      - dvwa
+    ports:
+      - "8080:8080"      # WAF-protected access
+    environment:
+      BACKEND: "http://dvwa:80"
+      PORT: "8080"
+      MODSEC_RULE_ENGINE: "On"
+      PARANOIA: "1"
+      ANOMALY_INBOUND: "5"
+      MODSEC_AUDIT_ENGINE: "RelevantOnly"
+      MODSEC_AUDIT_LOG: "/var/log/modsec/audit.log"
+      MODSEC_AUDIT_LOG_FORMAT: "JSON"
+    volumes:
+      - ./waf-logs:/var/log/modsec
