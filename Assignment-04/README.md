@@ -160,6 +160,8 @@ openssl req -x509 -newkey rsa:2048 -nodes -keyout certs/localhost.key -out certs
 
 The same attacks were re-run against the secure build, started with `node app.js` and `node attacker-server.js --https`.
 
+The terminal screenshots in this report are captures of a live run of `demo.sh` in GNOME Terminal, cropped to remove empty space. The browser screenshots were captured from headless Chrome through the DevTools Protocol, so they show the page content without an address bar.
+
 ### Cookie attributes and embedded token
 
 `Set-Cookie` now includes `HttpOnly; Secure; SameSite=Strict`, and the form contains a 64-character hexadecimal token.
